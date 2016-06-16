@@ -1,0 +1,34 @@
+#!/bin/bash
+cp -r "$TOOLS/landing_content"/* $PWD
+
+read -p "Title: " title
+if [[ -z "$title" ]]; then
+  title="Awesome product"
+fi
+sed -i -e "s/MAIN_TITLE/$title/g" $PWD/index.html
+
+read -p "Landing title: " landing_title
+if [[ -z "$landing_title" ]]; then
+  landing_title=$title
+fi
+sed -i -e "s/LANDING_TITLE/$landing_title/g" $PWD/index.html
+
+read -p "Landing subtitle: " landing_subtitle
+if [[ -z "$landing_subtitle" ]]; then
+  landing_subtitle="The best product in the world"
+fi
+sed -i -e "s/LANDING_SUBTITLE/$landing_subtitle/g" $PWD/index.html
+
+read -p "Summary heading: " summary_heading
+if [[ -z "$summary_heading" ]]; then
+  summary_heading=$landing_subtitle
+fi
+sed -i -e "s/SUMMARY_HEADING/$summary_heading/g" $PWD/index.html
+
+read -p "Contact email: " contact_email
+if [[ -z "$contact_email" ]]; then
+  contact_email="contact@jamesbrill.co.uk"
+fi
+sed -i -e "s/CONTACT_EMAIL/$contact_email/g" $PWD/index.html
+
+rm $PWD/index.html-e

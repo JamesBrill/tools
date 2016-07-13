@@ -1,0 +1,17 @@
+#!/bin/bash
+cp $TOOLS/package.json $PWD/package.json
+echo "Created package.json"
+npm install --save-dev babel-cli
+echo "Installed Babel"
+npm install --save-dev babel-preset-es2015
+echo "Installed ES 2015 preset"
+echo '{ "presets" : [ "es2015" ] }' > .babelrc
+echo "Created Babel configuration file"
+mkdir src
+echo "Created source directory"
+mkdir lib
+echo "Created output directory"
+echo "let temp = 42;" > src/index.js
+echo "Created dummy source"
+npm run build
+echo "Transpiled dummy source"
